@@ -24,20 +24,23 @@ Base de Datos: MongoDB
 
 APIs: Mapbox API
 
-Instalación //Todavia no disponible
+## Instalación //Todavia no disponible
 Clona este repositorio.
 Instala las dependencias utilizando npm install.
 
 Ejecuta la aplicación con npm start.
 
-Contribuciones
+## Contribuciones
 ¡Este proyecto está abierto a contribuciones de la comunidad! Si estás interesado en colaborar, no dudes en abrir un issue o enviar una solicitud de pull request.
 
-Estado del Proyecto
+## Estado del Proyecto
 El proyecto está en fase inicial de desarrollo. Se están explorando las tecnologías y recursos necesarios para su implementación. Se espera lanzar una versión beta en los próximos meses.
 
-Equipo
+## Equipo
 Mario Almandoz - Desarrollador Principal - [@marioalmandoz]
+
 Toni Bassa 
-Licencia
+
+## Licencia
+
 Este proyecto está bajo la [Licencia Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0).
