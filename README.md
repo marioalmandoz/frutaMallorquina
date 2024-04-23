@@ -10,13 +10,19 @@ Filtrado y Búsqueda: Filtra y busca lugares de cultivo según diversos criterio
 Integración de Datos en Tiempo Real: Integra datos en tiempo real sobre precios y calidad de las algarrobas en cada ubicación.
 Tecnologías Utilizadas
 Frontend: HTML, CSS, JavaScript
+
 Backend: Node.js, Express
+
 Base de Datos: MongoDB
+
 APIs: Mapbox API
-Instalación
+
+Instalación //Todavia no disponible
 Clona este repositorio.
 Instala las dependencias utilizando npm install.
+
 Ejecuta la aplicación con npm start.
+
 Contribuciones
 ¡Este proyecto está abierto a contribuciones de la comunidad! Si estás interesado en colaborar, no dudes en abrir un issue o enviar una solicitud de pull request.
 
