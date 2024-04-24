@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leaflet Map with Current Location</title>
+    <!-- Include Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/app.css" type="text/css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <script src="js/scripts.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>
+        <img src="images/finallogo.png" />
+      </h1>
+    </header>
+    <!-- Your map container -->
+    <div id="map" style="height: 400px"></div>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="46"
+      height="26"
+      viewBox="0 0 46 26"
+      fill="none"
+    >
+      <path
+        d="M25.1213 0.878679C23.9497 -0.292894 22.0503 -0.292894 20.8787 0.878679L1.78679 19.9706C0.615218 21.1421 0.615218 23.0416 1.78679 24.2132C2.95837 25.3848 4.85786 25.3848 6.02943 24.2132L23 7.24264L39.9706 24.2132C41.1421 25.3848 43.0416 25.3848 44.2132 24.2132C45.3848 23.0416 45.3848 21.1421 44.2132 19.9706L25.1213 0.878679ZM26 4V3L20 3V4L26 4Z"
+        fill="black"
+      />
+    </svg>
+    <h2>Click on a Stolpersteine</h2>
+
+    <nav class="bottom-menu">
+      <div class="menu-icon">
+        <a href="index.html">
+          <i class="fas fa-home" style="color: white"></i></a
+        ><span>Home</span>
+      </div>
+      <div class="menu-icon">
+        <a href="map.html"
+          ><i class="fas fa-map-marker-alt" style="color: #670104"></i></a
+        ><span>Map</span>
+      </div>
+      <div class="menu-icon">
+        <a href="history.html"
+          ><i class="fas fa-search" style="color: white"></i
+        ></a>
+        <span>History</span>
+      </div>
+    </nav>
+    <!-- Include Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- Your custom JavaScript -->
+    <script>
+      var mymap = L.map("map").setView([0, 0], 2); // Default view
+
+      // Add a tile layer (OpenStreetMap)
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; OpenStreetMap contributors",
+      }).addTo(mymap);
+
+      // Function to handle geolocation success
+      function onLocationFound(e) {
+        var radius = e.accuracy / 2;
+
+        L.marker(e.latlng)
+          .addTo(mymap)
+          .bindPopup("You are within " + radius + " meters from this point")
+          .openPopup();
+
+        L.circle(e.latlng, radius).addTo(mymap);
+      }
+
+      // Function to handle geolocation error
+      function onLocationError(e) {
+        alert(e.message);
+      }
+
+      var customIcon = L.icon({
+        iconUrl: "images/stolpersteinestone.png", // Replace with the path to your image
+        iconSize: [32, 32], // Size of the icon
+        iconAnchor: [16, 32], // Point of the icon that corresponds to the marker's location
+        popupAnchor: [0, -32], // Point from which the popup should open relative to the iconAnchor
+      });
+
+      // Add a marker at a specific location
+      var customMarker = L.marker([51.43208596421437, 5.473341450075729], {
+        icon: customIcon,
+      }).addTo(mymap);
+      var customMarker2 = L.marker([51.440036974184096, 5.477060169690364], {
+        icon: customIcon,
+      }).addTo(mymap);
+
+      // Add a popup to the marker
+      customMarker
+        .bindPopup(
+          `
+      <b>Staringstraat 29</b><br>
+      Want to know more about this person.<br>
+      <button onclick="navigateToPage2()">Click Here</button><br><br>
+      Want to take a picture of the Stolpersteine.<br>
+      <button onclick="navigateToPage1()">Click Here</button>
+    `
+        )
+        .openPopup();
+      customMarker2
+        .bindPopup(
+          `
+      <b>Demer 13</b><br>
+      Want to know more about this person.<br>
+      <button onclick="navigateToPage3()">Click Here</button><br><br>
+      Want to take a picture of the Stolpersteine.<br>
+      <button onclick="navigateToPage1()">Click Here</button>
+    `
+        )
+        .openPopup();
+
+      // Function to navigate to a different page
+      function navigateToPage1() {
+        // Navigate to a different HTML page
+        window.location.href = "camera.html";
+      }
+
+      // Function to navigate to a different page
+      function navigateToPage2() {
+        // Navigate to a different HTML page
+        window.location.href = "eduard.html";
+      }
+
+      // Function to navigate to a different page
+      function navigateToPage3() {
+        // Navigate to a different HTML page
+        window.location.href = "helmut.html";
+      }
+      // Try to get user's location
+      mymap.locate({ setView: true, maxZoom: 16 });
+
+      mymap.on("locationfound", onLocationFound);
+      mymap.on("locationerror", onLocationError);
+    </script>
+  </body>
+</html>
